@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Charlotte & Josselin · 21 août 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --paper:#FFFCEC;
+  --lemon:#F7EBA0;
+  --lemon-soft:#FBF4CC;
+  --zest:#E3C43F;
+  --leaf:#A9BC94;
+  --leaf-soft:#DDE6D1;
+  --blush:#F3D9CF;
+  --ink:#3B4429;
+  --ink-soft:#6B7358;
+  --line:#E6DDB0;
+  --card:#FFFFFF;
+  --serif:"Cormorant Garamond", "Garamond", "Times New Roman", serif;
+  --sans:"Jost", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#20241A; --lemon:#4A4626; --lemon-soft:#2C2F20; --zest:#E8CF5C;
+    --leaf:#8FA37A; --leaf-soft:#333A28; --blush:#4A3A33; --ink:#F4EFCF;
+    --ink-soft:#C4C2A6; --line:#454632; --card:#282C20;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#20241A; --lemon:#4A4626; --lemon-soft:#2C2F20; --zest:#E8CF5C;
+  --leaf:#8FA37A; --leaf-soft:#333A28; --blush:#4A3A33; --ink:#F4EFCF;
+  --ink-soft:#C4C2A6; --line:#454632; --card:#282C20;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65}
+img,svg{max-width:100%}
+a{color:inherit;text-decoration-color:var(--zest);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--zest);outline-offset:3px}
+
+/* NAV */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:1.5rem;overflow-x:auto;padding:.85rem 1.25rem;max-width:1080px;margin:0 auto;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav .mono{font-family:var(--serif);font-style:italic;font-size:1.35rem;white-space:nowrap;text-decoration:none;margin-right:auto}
+nav a.l{font-size:.92rem;text-decoration:none;white-space:nowrap;color:var(--ink-soft)}
+nav a.l:hover{color:var(--ink)}
+nav a.rsvp-btn{background:var(--ink);color:var(--paper);padding:.4rem 1rem;border-radius:999px;font-size:.9rem;text-decoration:none;white-space:nowrap}
+
+/* HERO */
+.hero{position:relative;text-align:center;padding:4.5rem 1.25rem 5rem;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:auto -20% -55% -20%;height:90%;background:radial-gradient(ellipse at center,var(--lemon) 0%,transparent 65%);opacity:.75;z-index:0}
+.hero > *{position:relative;z-index:1}
+.branch{width:min(340px,80vw);height:auto;display:block;margin:0 auto 1.5rem}
+.branch .fruit{fill:var(--zest)}
+.branch .fruit-hl{fill:var(--lemon-soft);opacity:.7}
+.branch .leafy{fill:var(--leaf)}
+.branch .stem{stroke:var(--ink-soft);fill:none;stroke-width:1.6;stroke-linecap:round}
+.names{font-family:var(--serif);font-weight:400;font-size:clamp(3rem,10vw,6.4rem);line-height:.95;margin:0;letter-spacing:-.01em}
+.names .amp{display:block;font-style:italic;font-size:.55em;color:var(--ink-soft);margin:.15em 0}
+.date{font-family:var(--serif);font-size:clamp(1.3rem,3.4vw,1.8rem);font-style:italic;margin:1.6rem 0 .2rem}
+.place{color:var(--ink-soft);margin:0}
+.countdown{display:inline-flex;gap:1.75rem;margin-top:2.25rem;padding:1rem 1.75rem;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--card) 70%,transparent)}
+.countdown div{display:flex;flex-direction:column;align-items:center;min-width:3rem}
+.countdown b{font-family:var(--serif);font-weight:500;font-size:1.8rem;line-height:1}
+.countdown span{font-size:.78rem;color:var(--ink-soft)}
+
+/* SECTIONS */
+section.s{padding:5rem 1.25rem;border-top:1px solid var(--line)}
+section.s.tint{background:var(--lemon-soft)}
+.inner{max-width:880px;margin:0 auto}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,5.5vw,3.2rem);line-height:1.05;margin:0 0 .6rem}
+.lead{color:var(--ink-soft);max-width:60ch;margin:0 0 2.5rem}
+h3{font-family:var(--serif);font-weight:600;font-size:1.4rem;margin:0 0 .3rem;line-height:1.2}
+.todo{background:var(--blush);color:var(--ink);padding:.05rem .45rem;border-radius:4px;font-size:.92em;white-space:nowrap}
+
+/* TIMELINE */
+.timeline{list-style:none;margin:0;padding:0;position:relative}
+.timeline::before{content:"";position:absolute;left:5.5rem;top:.6rem;bottom:.6rem;width:1px;background:var(--leaf)}
+.timeline li{display:grid;grid-template-columns:5.5rem 1fr;gap:0 2rem;padding:0 0 2.2rem;position:relative}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::after{content:"";position:absolute;left:calc(5.5rem - 6px);top:.55rem;width:13px;height:13px;border-radius:50%;background:var(--zest);border:3px solid var(--paper)}
+.tint .timeline li::after{border-color:var(--lemon-soft)}
+.timeline time{font-family:var(--serif);font-size:1.5rem;font-style:italic;text-align:right;padding-right:1.4rem;line-height:1.3}
+.timeline p{margin:.1rem 0 0;color:var(--ink-soft)}
+.day-label{font-family:var(--serif);font-style:italic;font-size:1.25rem;margin:3rem 0 1.4rem;color:var(--ink-soft)}
+
+/* LOGEMENTS */
+h3.cat{font-size:1.6rem;font-weight:500;font-style:italic;margin:2.5rem 0 1rem}
+h3.cat:first-of-type{margin-top:0}
+.towns{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+.town{border:0;border-top:1px solid var(--line)}
+.town:first-child{border-top:0}
+.town summary{display:flex;align-items:baseline;gap:.9rem;padding:1rem 3rem 1rem 1.3rem;font-size:1.25rem}
+.town summary::after{right:1.2rem}
+.town .tname{font-weight:500}
+.town .dist{font-family:var(--sans);font-size:.85rem;color:var(--ink-soft)}
+.town .count{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);margin-left:auto;white-space:nowrap}
+.town.featured{background:var(--leaf-soft)}
+.town[open]{background:var(--lemon-soft)}
+.town.featured[open]{background:var(--leaf-soft)}
+.stays{list-style:none;margin:0;padding:0 1.3rem 1.1rem}
+.stay{display:grid;grid-template-columns:1fr auto;gap:.3rem 1.5rem;padding:.9rem 0;border-top:1px dashed var(--line)}
+.stay:first-child{border-top:0;padding-top:.2rem}
+.stay h5{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin:0}
+.stay .meta{margin:0;font-size:.92rem;color:var(--ink-soft)}
+.stay .extra{margin:.3rem 0 0;font-size:.92rem}
+.stay .contact{display:flex;flex-direction:column;align-items:flex-end;font-size:.92rem;text-align:right}
+.stay .contact span{color:var(--ink-soft)}
+.stay .contact a{white-space:nowrap}
+.note{font-size:.88rem;color:var(--ink-soft);margin-top:1.5rem}
+@media (max-width:640px){
+  .stay{grid-template-columns:1fr}
+  .stay .contact{align-items:flex-start;text-align:left}
+  .town summary{flex-wrap:wrap;gap:.2rem .7rem}
+}
+
+/* INFOS */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2.5rem 3rem;margin-bottom:3.5rem}
+.info-grid p{margin:.2rem 0 0;color:var(--ink-soft)}
+.dress{display:flex;gap:.6rem;margin-top:.9rem;flex-wrap:wrap}
+.dress span{width:34px;height:34px;border-radius:50%;border:1px solid var(--line)}
+details{border-bottom:1px solid var(--line)}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;padding:1.1rem 2.5rem 1.1rem 0;font-family:var(--serif);font-size:1.3rem;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:.4rem;top:50%;transform:translateY(-50%);font-family:var(--sans);font-weight:300;font-size:1.5rem;color:var(--ink-soft);transition:transform .2s}
+details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+details p{margin:0 0 1.2rem;color:var(--ink-soft);max-width:65ch}
+
+/* LISTE */
+.gift{text-align:center;max-width:560px;margin:0 auto}
+.gift .lead{margin-left:auto;margin-right:auto}
+.btn{display:inline-block;font-family:var(--sans);font-size:1rem;padding:.85rem 1.9rem;border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);text-decoration:none;cursor:pointer}
+.btn[aria-disabled="true"]{background:transparent;color:var(--ink-soft);border-color:var(--line);cursor:default}
+
+/* RSVP */
+form{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem 1.5rem;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:2rem}
+.full{grid-column:1/-1}
+label{display:block;font-size:.9rem;margin-bottom:.35rem;color:var(--ink-soft)}
+input,select,textarea{width:100%;font:inherit;font-weight:400;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem}
+textarea{min-height:96px;resize:vertical}
+fieldset{border:0;padding:0;margin:0}
+legend{font-size:.9rem;color:var(--ink-soft);margin-bottom:.5rem;padding:0}
+.choices{display:flex;gap:.6rem;flex-wrap:wrap}
+.choices label{margin:0;cursor:pointer}
+.choices input{position:absolute;opacity:0;width:1px;height:1px}
+.choices span{display:inline-block;padding:.55rem 1.15rem;border:1px solid var(--line);border-radius:999px;color:var(--ink);background:var(--paper)}
+.choices input:checked + span{background:var(--lemon);border-color:var(--zest)}
+.choices input:focus-visible + span{outline:2px solid var(--zest);outline-offset:2px}
+.form-msg{grid-column:1/-1;margin:0;font-size:.95rem}
+.form-msg.err{color:#A04A35}
+
+footer{text-align:center;padding:4rem 1.25rem 3rem;border-top:1px solid var(--line)}
+footer .sig{font-family:var(--serif);font-style:italic;font-size:2rem;margin:0}
+footer p{color:var(--ink-soft);margin:.3rem 0 0;font-size:.9rem}
+
+@media (max-width:640px){
+  .timeline::before{left:4.2rem}
+  .timeline li{grid-template-columns:4.2rem 1fr;gap:0 1.4rem}
+  .timeline li::after{left:calc(4.2rem - 6px)}
+  .timeline time{font-size:1.2rem;padding-right:1rem}
+  form{grid-template-columns:1fr;padding:1.4rem}
+  .feature{grid-template-columns:1fr}
+  .countdown{gap:1rem;padding:.8rem 1.2rem}
+  section.s{padding:3.75rem 1.25rem}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Navigation principale">
+  <div class="wrap">
+    <a class="mono" href="#accueil">C &amp; J</a>
+    <a class="l" href="#programme">Programme</a>
+    <a class="l" href="#logements">Se loger</a>
+    <a class="l" href="#infos">Infos pratiques</a>
+    <a class="l" href="#liste">Liste de mariage</a>
+    <a class="rsvp-btn" href="#rsvp">Répondre</a>
+  </div>
+</nav>
+
+<header class="hero" id="accueil">
+  <svg class="branch" viewBox="0 0 340 150" aria-hidden="true">
+    <path class="stem" d="M10 40 C 80 30, 140 55, 170 50 S 270 30, 330 42"/>
+    <path class="stem" d="M120 47 C 118 60, 112 70, 108 78"/>
+    <path class="stem" d="M222 45 C 226 60, 232 70, 236 80"/>
+    <path class="leafy" d="M40 37 C 52 18, 78 16, 90 30 C 74 40, 54 42, 40 37 Z"/>
+    <path class="leafy" d="M70 40 C 74 56, 92 66, 106 60 C 98 46, 82 40, 70 40 Z" opacity=".75"/>
+    <path class="leafy" d="M150 52 C 160 34, 186 30, 196 44 C 180 54, 162 56, 150 52 Z" opacity=".85"/>
+    <path class="leafy" d="M250 38 C 262 20, 290 20, 300 34 C 284 44, 262 44, 250 38 Z"/>
+    <path class="leafy" d="M270 42 C 276 58, 296 66, 310 58 C 300 46, 284 40, 270 42 Z" opacity=".7"/>
+    <g transform="rotate(-12 108 104)">
+      <path class="fruit" d="M78 104 C 80 86, 96 76, 108 76 C 122 76, 138 86, 140 104 C 138 122, 122 132, 108 132 C 96 132, 80 122, 78 104 Z"/>
+      <path class="fruit" d="M76 104 L 70 101 L 76 98 Z"/>
+      <path class="fruit" d="M142 104 L 148 101 L 142 98 Z"/>
+      <ellipse class="fruit-hl" cx="98" cy="94" rx="12" ry="6"/>
+    </g>
+    <g transform="rotate(14 238 108)">
+      <path class="fruit" d="M212 108 C 214 92, 228 82, 238 82 C 250 82, 264 92, 266 108 C 264 124, 250 134, 238 134 C 228 134, 214 124, 212 108 Z"/>
+      <path class="fruit" d="M210 108 L 204 105 L 210 102 Z"/>
+      <path class="fruit" d="M268 108 L 274 105 L 268 102 Z"/>
+      <ellipse class="fruit-hl" cx="228" cy="98" rx="10" ry="5"/>
+    </g>
+  </svg>
+  <h1 class="names">Charlotte<span class="amp">&amp;</span>Josselin</h1>
+  <p class="date">Samedi 21 août 2027</p>
+  <p class="place">Château de Chavagneux, Genouilleux (Ain)</p>
+  <div class="countdown" id="countdown" aria-label="Compte à rebours jusqu'au mariage">
+    <div><b id="cd-d">–</b><span>jours</span></div>
+    <div><b id="cd-h">–</b><span>heures</span></div>
+    <div><b id="cd-m">–</b><span>minutes</span></div>
+  </div>
+</header>
+
+<main>
+
+<section class="s" id="programme">
+  <div class="inner">
+    <h2>Le programme</h2>
+    <p class="lead">Voici le déroulé de la journée. Les horaires seront précisés quelques mois avant le grand jour.</p>
+
+    <p class="day-label">Samedi 21 août</p>
+    <ol class="timeline">
+      <li>
+        <time><span class="todo">--h--</span></time>
+        <div>
+          <h3>Messe de mariage</h3>
+          <p>Église <span class="todo">nom à compléter</span>, <span class="todo">adresse à compléter</span></p>
+        </div>
+      </li>
+      <li>
+        <time><span class="todo">--h--</span></time>
+        <div>
+          <h3>Vin d'honneur</h3>
+          <p>Dans le parc du Château de Chavagneux, au bord des bassins.</p>
+        </div>
+      </li>
+      <li>
+        <time><span class="todo">--h--</span></time>
+        <div>
+          <h3>Dîner</h3>
+          <p>Dans la salle de réception du château.</p>
+        </div>
+      </li>
+      <li>
+        <time><span class="todo">--h--</span></time>
+        <div>
+          <h3>Soirée dansante</h3>
+          <p>Jusqu'au bout de la nuit.</p>
+        </div>
+      </li>
+    </ol>
+
+  </div>
+</section>
+
+<section class="s tint" id="logements">
+  <div class="inner">
+    <h2>Se loger</h2>
+    <p class="lead">Voici les adresses recommandées par le château, classées de la plus proche à la plus éloignée. Ouvrez une commune pour voir ses adresses. Le mois d'août est très demandé dans le Beaujolais : pensez à réserver tôt.</p>
+
+    <h3 class="cat">Gîtes et maisons d'hôtes</h3>
+    <div class="towns">
+<details class="town featured"><summary><span class="tname">Guéreins</span><span class="dist">3 km</span><span class="count">1 adresse</span></summary><ul class="stays"><li class="stay"><div><h5>Les Gîtes de la Calonne</h5><p class="meta">9 gîtes de 2 à 8 personnes · environ 55 à 120 € la nuit</p><p class="extra">Terrasses, barbecues et terrain de pétanque. Parfait pour se loger en famille ou entre amis.</p></div><div class="contact"><a href="https://www.gites-calonne.fr" target="_blank" rel="noopener">gites-calonne.fr</a><span>557 rue du Centre</span></div></li></ul></details>
+<details class="town"><summary><span class="tname">Genouilleux</span><span class="dist">500 m</span><span class="count">1 adresse</span></summary><ul class="stays"><li class="stay"><div><h5>Chez Anne-Sophie Bellelle</h5><p class="meta">2 roulottes pour 2 personnes · 95 € — Gîte 6 à 8 personnes · 145 €</p><p class="extra">Possibilité de camper.</p></div><div class="contact"><a href="tel:0607958563">06 07 95 85 63</a></div></li></ul></details>
+<details class="town"><summary><span class="tname">Belleville-sur-Saône</span><span class="dist">8 km</span><span class="count">1 adresse</span></summary><ul class="stays"><li class="stay"><div><h5>Château de la Plume</h5><p class="meta">Maison d'hôtes · 100 €</p></div><div class="contact"><a href="tel:0474669499">04 74 66 94 99</a></div></li></ul></details>
+<details class="town"><summary><span class="tname">Lancié</span><span class="dist">10 km</span><span class="count">1 adresse</span></summary><ul class="stays"><li class="stay"><div><h5>Les Pasquiers</h5><p class="meta">Maison d'hôtes · 80 €</p></div><div class="contact"><a href="tel:0474698633">04 74 69 86 33</a></div></li></ul></details>
+<details class="town"><summary><span class="tname">Villié-Morgon</span><span class="dist">12 km</span><span class="count">2 adresses</span></summary><ul class="stays"><li class="stay"><div><h5>Domaine de la Javernière</h5><p class="meta">Maison d'hôtes</p></div><div class="contact"><a href="tel:0666059052">06 66 05 90 52</a></div></li><li class="stay"><div><h5>Le Clachet</h5><p class="meta">Maison d'hôtes</p></div><div class="contact"><a href="tel:0474042497">04 74 04 24 97</a></div></li></ul></details>
+<details class="town"><summary><span class="tname">Lantignié</span><span class="dist">12 km</span><span class="count">1 adresse</span></summary><ul class="stays"><li class="stay"><div><h5>La Bourdonnière</h5><p class="meta">Maison d'hôtes</p></div><div class="contact"><a href="tel:0474048258">04 74 04 82 58</a></div></li></ul></details>
+<details class="town"><summary><span class="tname">Denicé</span><span class="dist">12 km</span><span class="count">1 adresse</span></summary><ul class="stays"><li class="stay"><div><h5>Domaine de Pouilly le Châtel</h5><p class="meta">Maison d'hôtes · 100 €</p></div><div class="contact"><a href="tel:0474674101">04 74 67 41 01</a></div></li></ul></details>
+<details class="town"><summary><span class="tname">Arnas</span><span class="dist">15 km</span><span class="count">1 adresse</span></summary><ul class="stays"><li class="stay"><div><h5>Château de Longsard</h5><p class="meta">Maison d'hôtes · 130 €</p></div><div class="contact"><a href="tel:0474655512">04 74 65 55 12</a></div></li></ul></details>
+    </div>
+
+    <h3 class="cat">Hôtels</h3>
+    <div class="towns">
+<details class="town"><summary><span class="tname">Belleville-sur-Saône</span><span class="dist">8 km</span><span class="count">4 adresses</span></summary><ul class="stays"><li class="stay"><div><h5>L'Ange Couronné</h5><p class="meta">★★ · 48 €</p></div><div class="contact"><a href="tel:0474664200">04 74 66 42 00</a><span>18 rue de la République</span></div></li><li class="stay"><div><h5>Les Balladins</h5><p class="meta">★★ · 52 €</p></div><div class="contact"><a href="tel:0474660295">04 74 66 02 95</a><span>ZA Les Prés de la Cloche</span></div></li><li class="stay"><div><h5>Hôtel Charme</h5><p class="meta">★★ · 60 €</p></div><div class="contact"><a href="tel:0474696169">04 74 69 61 69</a><span>Péage A6, sortie Belleville</span></div></li><li class="stay"><div><h5>La Route des Vins</h5><p class="meta">★★ · 65 €</p></div><div class="contact"><a href="tel:0474663468">04 74 66 34 68</a><span>1 place de la Gare</span></div></li></ul></details>
+<details class="town"><summary><span class="tname">Taponas</span><span class="dist">9 km</span><span class="count">1 adresse</span></summary><ul class="stays"><li class="stay"><div><h5>Auberge des Sablons</h5><p class="meta">★★ · 49 €</p></div><div class="contact"><a href="tel:0474663480">04 74 66 34 80</a><span>Le Bourg</span></div></li></ul></details>
+<details class="town"><summary><span class="tname">Montmerle-sur-Saône</span><span class="dist">9 km</span><span class="count">2 adresses</span></summary><ul class="stays"><li class="stay"><div><h5>Émile Job</h5><p class="meta">★★ · 65 à 95 €</p></div><div class="contact"><a href="tel:0474693392">04 74 69 33 92</a><span>12 rue du Pont</span></div></li><li class="stay"><div><h5>Le Trésor d'Alice</h5><p class="meta">★★★</p></div><div class="contact"><a href="tel:0474690440">04 74 69 04 40</a><span>Cherves</span></div></li></ul></details>
+<details class="town"><summary><span class="tname">Saint-Jean-d'Ardières</span><span class="dist">10 km</span><span class="count">1 adresse</span></summary><ul class="stays"><li class="stay"><div><h5>Château de Pizay</h5><p class="meta">★★★★ · 235 €</p></div><div class="contact"><a href="tel:0474665141">04 74 66 51 41</a><span>443 route de Morgon</span></div></li></ul></details>
+<details class="town"><summary><span class="tname">Châtillon-sur-Chalaronne</span><span class="dist">14 km</span><span class="count">1 adresse</span></summary><ul class="stays"><li class="stay"><div><h5>La Tour, Cocooning et Gastronomie</h5><p class="meta">★★★ · 80 à 170 €</p></div><div class="contact"><a href="tel:0474550512">04 74 55 05 12</a><span>Place de la République</span></div></li></ul></details>
+<details class="town"><summary><span class="tname">Quincié-en-Beaujolais</span><span class="count">1 adresse</span></summary><ul class="stays"><li class="stay"><div><h5>Le Mont Brouilly</h5><p class="meta">★★ · 70 €</p></div><div class="contact"><a href="tel:0474043373">04 74 04 33 73</a><span>Pont des Samsons</span></div></li></ul></details>
+<details class="town"><summary><span class="tname">Villefranche-sur-Saône</span><span class="count">3 adresses</span></summary><ul class="stays"><li class="stay"><div><h5>Hôtel Newport</h5><p class="meta">★★ · 71 €</p></div><div class="contact"><a href="tel:0474687559">04 74 68 75 59</a><span>Avenue de l'Europe</span></div></li><li class="stay"><div><h5>Hôtel Plaisance</h5><p class="meta">★★★ · 75 €</p></div><div class="contact"><a href="tel:0474653352">04 74 65 33 52</a><span>96 avenue de la Libération</span></div></li><li class="stay"><div><h5>Hôtel Mercure</h5><p class="meta">★★ · 80 €</p></div><div class="contact"><a href="tel:0474620104">04 74 62 01 04</a><span>146 rue de la Sous-Préfecture</span></div></li></ul></details>
+<details class="town"><summary><span class="tname">Crêches-sur-Saône</span><span class="count">1 adresse</span></summary><ul class="stays"><li class="stay"><div><h5>Hôtel Ibis</h5><p class="meta">★★ · 73 €</p></div><div class="contact"><a href="tel:0385365160">03 85 36 51 60</a><span>371 rue du Mâconnais</span></div></li></ul></details>
+<details class="town"><summary><span class="tname">Chaintré</span><span class="dist">19 km</span><span class="count">2 adresses</span></summary><ul class="stays"><li class="stay"><div><h5>Hôtel Akema</h5><p class="meta">35 €</p></div><div class="contact"><a href="tel:0385371990">03 85 37 19 90</a><span>ZAC des Bouchardes</span></div></li><li class="stay"><div><h5>Campanile</h5><p class="meta">★★ · 71 €</p></div><div class="contact"><a href="tel:0385239888">03 85 23 98 88</a><span>ZAC des Bouchardes</span></div></li></ul></details>
+<details class="town"><summary><span class="tname">Mâcon</span><span class="dist">22 km</span><span class="count">4 adresses</span></summary><ul class="stays"><li class="stay"><div><h5>Hôtel Concorde</h5><p class="meta">★★ · 70 €</p></div><div class="contact"><a href="tel:0385342147">03 85 34 21 47</a><span>73 rue Lacretelle</span></div></li><li class="stay"><div><h5>Hôtel d'Europe et d'Angleterre</h5><p class="meta">★★ · 75 €</p></div><div class="contact"><a href="tel:0385382794">03 85 38 27 94</a><span>92 quai Jean Jaurès</span></div></li><li class="stay"><div><h5>Novotel</h5><p class="meta">★★★ · 103 €</p></div><div class="contact"><a href="tel:0385204000">03 85 20 40 00</a><span>A6, sortie 28 Mâcon-Nord</span></div></li><li class="stay"><div><h5>Park Inn</h5><p class="meta">★★★ · 129 €</p></div><div class="contact"><a href="tel:0385219393">03 85 21 93 93</a><span>26 rue Pierre de Coubertin</span></div></li></ul></details>
+<details class="town"><summary><span class="tname">Bagnols</span><span class="dist">24 km</span><span class="count">1 adresse</span></summary><ul class="stays"><li class="stay"><div><h5>Château de Bagnols</h5><p class="meta">★★★★★ · 510 à 600 €</p></div><div class="contact"><a href="tel:0474714000">04 74 71 40 00</a><span>Le Bourg</span></div></li></ul></details>
+<details class="town"><summary><span class="tname">Vonnas</span><span class="count">2 adresses</span></summary><ul class="stays"><li class="stay"><div><h5>Résidence des Saules</h5><p class="meta">★★ · 160 €</p></div><div class="contact"><a href="tel:0474509051">04 74 50 90 51</a><span>Place du Marché</span></div></li><li class="stay"><div><h5>Georges Blanc</h5><p class="meta">★★★★ · 180 à 300 €</p></div><div class="contact"><a href="tel:0474509090">04 74 50 90 90</a><span>Place du Marché</span></div></li></ul></details>
+<details class="town"><summary><span class="tname">Saint-Cyr-au-Mont-d'Or</span><span class="count">1 adresse</span></summary><ul class="stays"><li class="stay"><div><h5>L'Ermitage</h5><p class="meta">★★★ · 135 à 185 €</p></div><div class="contact"><a href="tel:0472196969">04 72 19 69 69</a><span>Mont Cindre</span></div></li></ul></details>
+    </div>
+
+    <p class="note">Les tarifs sont indicatifs, par nuit, et peuvent avoir changé. Pensez à prévoir un conducteur ou un covoiturage pour le retour de soirée.</p>
+  </div>
+</section>
+
+<section class="s" id="infos">
+  <div class="inner">
+    <h2>Infos pratiques</h2>
+    <p class="lead">Tout ce qu'il faut savoir pour arriver serein.</p>
+
+    <div class="info-grid">
+      <div>
+        <h3>Adresse</h3>
+        <p>Château de Chavagneux<br>01090 Genouilleux</p>
+        <p><a href="https://www.google.com/maps/search/?api=1&query=Ch%C3%A2teau+de+Chavagneux+Genouilleux" target="_blank" rel="noopener">Ouvrir dans Google Maps</a></p>
+      </div>
+      <div>
+        <h3>En voiture</h3>
+        <p>Environ 45 minutes depuis Lyon par l'A6, sortie Belleville. Un parking est disponible sur place.</p>
+      </div>
+      <div>
+        <h3>En train</h3>
+        <p>Gares les plus proches : Belleville-sur-Saône (TER), Villefranche-sur-Saône, ou Mâcon-Loché (TGV). Signalez-nous votre arrivée, on organisera des covoiturages.</p>
+      </div>
+      <div>
+        <h3>Dress code</h3>
+        <p>Élégant d'été. Laissez le blanc à la mariée. Le parc est en herbe : prévoyez des talons larges.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:1rem">Questions fréquentes</h3>
+    <details>
+      <summary>Avant quelle date faut-il répondre ?</summary>
+      <p>Merci de nous répondre avant le <span class="todo">date à compléter</span> grâce au formulaire en bas de cette page.</p>
+    </details>
+    <details>
+      <summary>Que faire en cas de régime alimentaire particulier ?</summary>
+      <p>Indiquez-le dans le formulaire de réponse, nous transmettrons au traiteur.</p>
+    </details>
+    <details>
+      <summary>Qui contacter le jour J ?</summary>
+      <p>Nos témoins : <span class="todo">prénom · téléphone</span> et <span class="todo">prénom · téléphone</span>. Évitez de nous appeler ce jour-là, nous aurons les mains prises.</p>
+    </details>
+  </div>
+</section>
+
+<section class="s tint" id="liste">
+  <div class="inner gift">
+    <h2>Liste de mariage</h2>
+    <p class="lead">Votre présence est notre plus beau cadeau. Pour ceux qui le souhaitent, notre liste sera bientôt en ligne.</p>
+    <a class="btn" id="gift-link" href="#" aria-disabled="true">Disponible prochainement</a>
+  </div>
+</section>
+
+<section class="s" id="rsvp">
+  <div class="inner">
+    <h2>Serez-vous des nôtres ?</h2>
+    <p class="lead">Merci de répondre avant le <span class="todo">date à compléter</span>. Une réponse par foyer suffit.</p>
+
+    <form id="rsvp-form" novalidate>
+      <div>
+        <label for="f-name">Nom et prénom</label>
+        <input id="f-name" name="name" autocomplete="name" required>
+      </div>
+      <div>
+        <label for="f-email">E-mail</label>
+        <input id="f-email" name="email" type="email" autocomplete="email">
+      </div>
+      <fieldset class="full">
+        <legend>Votre réponse</legend>
+        <div class="choices">
+          <label><input type="radio" name="coming" value="Oui, avec joie" required><span>Oui, avec joie</span></label>
+          <label><input type="radio" name="coming" value="Non, malheureusement"><span>Non, malheureusement</span></label>
+        </div>
+      </fieldset>
+      <div>
+        <label for="f-adults">Nombre d'adultes</label>
+        <select id="f-adults" name="adults"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option></select>
+      </div>
+      <div>
+        <label for="f-kids">Nombre d'enfants</label>
+        <select id="f-kids" name="kids"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+      </div>
+      <div class="full">
+        <label for="f-diet">Allergies ou régimes alimentaires</label>
+        <input id="f-diet" name="diet" placeholder="Végétarien, sans gluten…">
+      </div>
+      <div class="full">
+        <label for="f-msg">Un petit mot pour nous</label>
+        <textarea id="f-msg" name="msg"></textarea>
+      </div>
+      <div class="full"><button class="btn" type="submit">Envoyer ma réponse</button></div>
+      <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p class="sig">Charlotte &amp; Josselin</p>
+  <p>21 août 2027 · Château de Chavagneux</p>
+</footer>
+
+<script>
+// ===== À personnaliser =====
+const RSVP_EMAIL = "charlotte.josselin@exemple.fr";   // adresse qui reçoit les réponses
+const GIFT_URL = "";                                   // lien de la liste de mariage (vide = pas encore en ligne)
+// ===========================
+
+(function countdown(){
+  const target = new Date("2027-08-21T14:00:00+02:00").getTime();
+  const d = document.getElementById("cd-d"), h = document.getElementById("cd-h"), m = document.getElementById("cd-m");
+  function tick(){
+    let diff = Math.max(0, target - Date.now());
+    const days = Math.floor(diff / 864e5); diff -= days * 864e5;
+    const hours = Math.floor(diff / 36e5); diff -= hours * 36e5;
+    const mins = Math.floor(diff / 6e4);
+    d.textContent = days; h.textContent = hours; m.textContent = mins;
+  }
+  tick(); setInterval(tick, 30000);
+})();
+
+(function gift(){
+  const a = document.getElementById("gift-link");
+  if (GIFT_URL) {
+    a.href = GIFT_URL; a.target = "_blank"; a.rel = "noopener";
+    a.removeAttribute("aria-disabled"); a.textContent = "Voir notre liste";
+  } else {
+    a.addEventListener("click", e => e.preventDefault());
+  }
+})();
+
+document.getElementById("rsvp-form").addEventListener("submit", function(e){
+  e.preventDefault();
+  const f = e.target, msg = document.getElementById("form-msg");
+  const name = f.name.value.trim();
+  const coming = (f.querySelector('input[name="coming"]:checked') || {}).value;
+  if (!name || !coming) {
+    msg.className = "form-msg err";
+    msg.textContent = !name ? "Indiquez votre nom pour que l'on sache qui répond." : "Choisissez oui ou non pour votre présence.";
+    return;
+  }
+  const body = [
+    "Nom : " + name,
+    "E-mail : " + (f.email.value || "—"),
+    "Présence : " + coming,
+    "Adultes : " + f.adults.value + " · Enfants : " + f.kids.value,
+    "Régime alimentaire : " + (f.diet.value || "—"),
+    "",
+    "Message :",
+    f.msg.value || "—"
+  ].join("\n");
+  const href = "mailto:" + RSVP_EMAIL + "?subject=" + encodeURIComponent("RSVP mariage · " + name) + "&body=" + encodeURIComponent(body);
+  window.location.href = href;
+  msg.className = "form-msg";
+  msg.textContent = "Votre messagerie s'ouvre avec la réponse pré-remplie. Il ne reste qu'à cliquer sur Envoyer. Merci !";
+});
+</script>
+</body>
+</html>
