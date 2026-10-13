@@ -222,8 +222,10 @@ legend{font-size:.9rem;color:var(--ink-soft);margin-bottom:.5rem;padding:0}
 .intro-rain{position:absolute;inset:0}
 .intro-rain{contain:strict}
 .intro-rain .drop{position:absolute;top:0;transform:translate3d(0,-240px,0);will-change:transform;backface-visibility:hidden;user-select:none}
-.intro-on .aurora{display:none}
-.intro-on .countdown{-webkit-backdrop-filter:none;backdrop-filter:none}
+.aurora{transition:opacity 1.4s ease}
+.intro-on .aurora{opacity:0}
+.intro-on .aurora i{animation-play-state:paused}
+html{scrollbar-gutter:stable}
 .intro-bg{will-change:opacity,transform}
 .hero-wait .hero .names,.hero-wait .hero .date,.hero-wait .hero .place,.hero-wait .hero .countdown,.hero-wait .hero .branch,.hero-wait .hero .hero-deadline{animation-play-state:paused}
 .hero .hero-deadline{animation:rise 1.1s cubic-bezier(.2,.7,.2,1) .75s both}
@@ -539,7 +541,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.doc
   function finish() {
     if (done) return; done = true;
     root.classList.remove("hero-wait");
-    const f = intro.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, easing: "ease-out", fill: "forwards" });
+    const f = intro.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 500, easing: "ease-in-out", fill: "forwards" });
     f.onfinish = () => { intro.remove(); root.classList.remove("intro-on"); };
   }
   intro.addEventListener("click", finish);
